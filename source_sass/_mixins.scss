@@ -1,1 +1,153 @@
 // Insert your mixins
+@mixin media($queryString){
+    @media #{$queryString} {
+            @content;
+    }
+}
+
+@mixin nav_clicked(){
+    .li.expanded:after{
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 100%;
+        height: 3px;
+        background-color: $pink;
+        content: "";
+    }
+    .li.expanded{
+        color: $pink;
+    }
+}
+
+@mixin background() {
+    @for $i from 1 through 1 {
+        &:nth--of-type(#{$i}) {
+          background-color: $blue;
+        }
+    }
+ }
+
+@mixin opacityAni(){
+     @-webkit-keyframes opacityAni {
+                  0%   { opacity: 0; }
+                  100% { opacity: 1; }
+                }
+                @-moz-keyframes opacityAni {
+                  0%   { opacity: 0; }
+                  100% { opacity: 1; }
+                }
+                @-o-keyframes opacityAni {
+                  0%   { opacity: 0; }
+                  100% { opacity: 1; }
+                }
+                @keyframes opacityAni {
+                  0%   { opacity: 0; }
+                  100% { opacity: 1; }
+                }
+}
+
+@mixin fullLength(){
+    .row{
+        max-width: 100% !important;
+        width: 100%;
+    }
+}
+
+@mixin divBorder(){
+     border: $darkgrey 10px solid;
+}
+
+@mixin divHeight(){
+    height: 100vh;
+}
+
+
+@mixin headFont($fontSize){
+    font-size: $fontSize;
+    font-family: Helvetica;
+    letter-spacing: 10px;
+    color: $darkgrey;
+    font-weight: bold;
+}
+
+@mixin subFont($fontSize, $weight){
+    font-size: $fontSize;
+    font-family: Helvetica;
+    letter-spacing: 2px;
+    color: $darkgrey;
+    font-weight: $weight;
+}
+
+
+@mixin textTransition(){
+    
+    ul {
+      margin-top:0;
+      
+      
+      list-style:none;
+      animation:6s linear 0s normal none infinite change;
+      -webkit-animation:6s linear 0s normal none infinite change;
+      -moz-animation:6s linear 0s normal none infinite change;
+      -o-animation:6s linear 0s normal none infinite change;
+    }
+
+    ul li {
+      line-height:100px;
+      margin:0;
+    }
+    
+    ul:hover{
+        -webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
+        animation-play-state: paused;
+    }
+    
+
+    @-webkit-keyframes change {
+      0%   {margin-top:0;}
+      15%  {margin-top:0;}
+      25%  {margin-top:-100px;}
+      40%  {margin-top:-100px;}
+      50%  {margin-top:-200px;}
+      65%  {margin-top:-200px;}
+      75%  {margin-top:-100px;}
+      85%  {margin-top:-100px;}
+      100% {margin-top:0;}
+    }
+    @keyframes change {
+      0%   {margin-top:0;}
+      15%  {margin-top:0;}
+      25%  {margin-top:-100px;}
+      40%  {margin-top:-100px;}
+      50%  {margin-top:-200px;}
+      65%  {margin-top:-200px;}
+      75%  {margin-top:-100px;}
+      85%  {margin-top:-100px;}
+      100% {margin-top:0;}
+    }
+}
+
+@mixin textTyping(){
+    @-webkit-keyframes typing {
+        from { width: 100% }
+        to { width: 75% }
+    }
+
+    @-webkit-keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: black }
+    }
+
+    @-moz-keyframes typing {
+        from { width: 95%}
+        to { width:75% }
+    }
+
+    @-moz-keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: black }
+    }
+}
+

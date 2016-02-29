@@ -1,1 +1,319 @@
 // Add any custom Sass & CSS here
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+#dvLoading{
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    
+    z-index: 2500;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    .fullscreen-bg__video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    i{
+        
+        position: relative;
+        top: 40%;
+        left: 47%;
+        z-index: 3000;
+        
+    }
+}
+
+
+
+@include fullLength();
+a{
+    text-decoration: none;
+    color: white;
+}
+.top-bar{
+    background-color: $darkgrey;
+}
+nav{
+    z-index: 2000;
+    position: fixed;
+    width: 100%;
+    line-height: 60px;
+    background-color: black;
+    color: white;
+    div ul{
+        @include nav_clicked();
+    }
+} 
+#main{
+    z-index: -2;
+    background-image:url("../media/paper.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 1000px;
+    @include divBorder();
+    @include divHeight();
+    #text{
+        margin-top: 100px;
+        @include headFont($largeFont);
+        
+    }
+    .visible {
+      
+      overflow:hidden;
+      height:100px;   
+    }
+    #questionMark{
+        line-height: 100px;
+        @include headFont($extrabigFont);
+        @include textTransition();
+        li:nth-child(1){
+            &:hover{
+                color: $blue;
+            }
+        }
+        li:nth-child(2){
+            &:hover{
+                color: $pink;
+            }
+        }
+        li:nth-child(3){
+            &:hover{
+                color: $orange;
+            }
+        }
+        
+    }
+    .row #head{
+        position: relative;
+        top: 60px;
+        left: 15px;
+    }
+    .row #eyebrow{
+        left: 15px;
+        position: relative;
+        top: -240px;
+        
+    }
+   
+}
+
+
+@each $value in $list{
+    #part#{nth($value, 1)}{
+        @include divHeight();
+        background-color: nth($value, 2);
+        .titlepart{
+            padding-top: 100px;
+            .title{
+                
+                padding-left: 10px;
+                @include media("(min-width: 1025px)"){
+                    @include subFont($largeFont, bold);
+
+                }
+                @include media("(max-width: 1024px) and (min-width: 641px)"){
+                    @include subFont($largeFont, bold);
+                }
+                @include media("(max-width: 640px)"){
+                    @include subFont($midFont, bold);
+                }
+            }
+            .smalliconImg{
+                    width: 60px;
+                    height: 60px;
+                    margin-top: -10px;
+                    @include opacityAni();
+                    @include media("(min-width: 1025px)"){
+                        opacity: 0;
+                    }
+                    @include media("(max-width: 1024px)"){
+                        animation: opacityAni 3s;
+                    }
+            }
+
+
+        }
+
+       .icon{
+            margin-top: -50px;
+            @include media("(min-width: 1025px)"){
+                
+                display: block;
+                animation: opacityAni 3s;
+            }
+            @include media("(max-width: 1024px)"){
+                display: none;
+            }
+           
+         }
+        .context{
+            padding-top: 50px;
+            @include media("(min-width: 1025px)"){
+                @include subFont($midFont, normal);
+
+            }
+            @include media("(max-width: 1024px) and (min-width: 641px)"){
+                @include subFont($midFont, normal);
+                padding-left: 10px;
+            }
+            @include media("(max-width: 640px)"){
+                @include subFont($smallFont, normal);
+            }
+            
+            
+        }
+
+
+    }
+}
+#part1{
+    .titlepart{
+        .title{
+            padding-left: 30px;
+        }
+    }
+}
+
+
+#last{
+    background-color: $orange;
+    @include divHeight();
+    @include divBorder();
+    @include textTyping();
+    @keyframes type{
+        from{ width: 0;}
+    }
+    #btw{
+        padding-top: 100px;
+        
+        white-space:nowrap;
+	    overflow: hidden;
+        span{
+                animation: blink 1s infinite;
+        }
+        @keyframes blink{
+            to{ opacity: .0;}
+        }
+        @include media("(min-width: 1025px)"){
+            @include headFont($midFont);
+
+        }
+        @include media("(max-width: 1024px) and (min-width: 641px)"){
+            @include headFont(25px);
+            margin-top: 50px;
+        }
+        @include media("(max-width: 640px)"){
+            @include headFont($smallFont);
+            margin-top: 50px;
+        }
+        
+    }
+    #btw.typed{
+            animation: type 5s steps(50, end) 1;
+    }
+    #name{
+        
+         @include media("(min-width: 1025px)"){
+            @include headFont($largeFont2);
+
+        }
+        @include media("(max-width: 1024px) and (min-width: 641px)"){
+            @include headFont(50px);
+        }
+        @include media("(max-width: 640px)"){
+            @include headFont($midFont);
+        }
+    }
+    #button{
+        div{
+            background-color: $darkgrey;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            text-align: center;
+            
+             &:hover{
+                color: black;
+                transform: translate(5px, 5px);
+                box-shadow: 0px 0px 0 black;
+
+            }
+            box-shadow: 5px 5px 0 black;
+             @include media("(min-width: 1025px)"){
+                width: 300px;
+                @include headFont($smallFont);
+                 color: $orange;
+            }
+            @include media("(max-width: 1024px) and (min-width: 641px)"){
+                width: 200px;
+                @include headFont($extrasmallFont);
+                color: $orange;
+            }
+            @include media("(max-width: 640px)"){
+                width: 150px;
+                @include headFont($extrasmallFont);
+                color: $orange;
+            }
+            
+        }
+        
+        margin-top: 20px;
+        
+        
+       
+
+        text-decoration: none;
+            
+            
+        
+       
+       
+    }
+    
+    #modal{
+            display: none;
+            z-index: 10;
+            width: 100%;
+            @include divHeight();
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+            #close{
+                right: 20px;
+                padding-top: 70px;
+                color: white;
+                font-size: $largeFont;
+                font-weight: bold;
+                position: absolute;
+                z-index: 2000;
+            }
+            .row .social{
+                margin-top: 250px;
+                display: inline-block;
+            }
+            #carousel .owl-carousel{
+               padding-top: 40%;
+                
+            }
+            
+        }
+}
+
+    
+   
+
