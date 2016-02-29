@@ -6,6 +6,7 @@ $(window).load(function(){
 });
 
 $(document).ready(function(){
+    
     dragQuestionMark();
     eyebrowAnimate();
     iconAnimation();
@@ -217,7 +218,7 @@ var modal = function(){
 }
 
 var typingEffect = function(){
-    var inhere = 0
+    var inhere = 0;
    $(window).scroll(function() {
         if($(window).scrollTop() + $(window).height() == $(document).height()) {
             console.log("get here");
@@ -231,14 +232,16 @@ var typingEffect = function(){
     
 }
 
-var scroller = function(scroll_h){
+var scroller = function(scroll_h, num){
+    options = {};
+    
     $('html, body').animate({
                 scrollTop: scroll_h
             }, 800);
 }
 
 var customizeScroll = function(){
-    console.log($(window).height());
+    
     $(window).scroll(function() {
         clearTimeout($.data(this, 'scrollTimer'));
         $.data(this, 'scrollTimer', setTimeout(function() {
@@ -246,19 +249,19 @@ var customizeScroll = function(){
             console.log(curr);
             $("nav div ul li").css("color", "white");
             if(curr< 1*$(window).height()){
-                scroller(0);
+                scroller(0, 0);
                 $("nav div ul li:nth-child(1)").css("color", "grey");
             }else if(curr>=1*$(window).height() && curr < 2*$(window).height()){
-                scroller($(window).height());
+                scroller($(window).height(), 1);
                 $("nav div ul li:nth-child(2)").css("color", "grey");
             }else if(curr >=2*$(window).height() && curr < 3*$(window).height()){
-                scroller(2*$(window).height());
+                scroller(2*$(window).height(), 2);
                 $("nav div ul li:nth-child(3)").css("color", "grey");
             }else if(curr >= 3*$(window).height() && curr < 4*$(window).height()){
-                scroller(3*$(window).height());
+                scroller(3*$(window).height(), 3);
                 $("nav div ul li:nth-child(4)").css("color", "grey");
             } else if(curr >= 4*$(window).height() && curr < 5*$(window).height()){
-                scroller(4*$(window).height());
+                scroller(4*$(window).height(),0);
                 $("nav div ul li:nth-child(5)").css("color", "grey");
             }
         }, 2000));
@@ -277,3 +280,8 @@ var customizeScroll = function(){
                 }, 400);
             });
 }
+
+$.stellar({
+  verticalOffset: "-100",
+  scrollProperty: "position"
+});
