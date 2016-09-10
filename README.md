@@ -1,6 +1,6 @@
-# Starter files for MP2
+#Personal Website
+This is my old personal website, which is developed from one of the class projects.
 
-## Setup
 Use the following commands in your vagrant development environment to get this up and running
 ```bash
 git clone --bare https://github.com/uiuc-web-programming/mp2_starter.git
